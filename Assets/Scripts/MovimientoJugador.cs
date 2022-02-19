@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class MovimientoJugador : MonoBehaviour
 { 
-    public float speed=7;
+    public float speed=10;
+    public float jumpPower;
     private Rigidbody2D body;
     public LayerMask groundLayer;
-        public LayerMask wallLayer;
+    public LayerMask wallLayer;
 
     private Animator anim;
     private float movJugador;
@@ -41,36 +42,51 @@ public class MovimientoJugador : MonoBehaviour
 
 
 //saltar pared
-        if(wallJumpCooldown < 0.2f){
-            if (Input.GetKey(KeyCode.UpArrow) && isGrounded())
-                    Jump();
+        if(wallJumpCooldown > 0.2f){
+
 
             body.velocity = new Vector2(movJugador * speed, body.velocity.y);
 
             if(onWall() && !isGrounded()){ 
                 body.gravityScale = 0;
                 body.velocity = Vector2.zero;
-            }else{
+            }else
+                 body.gravityScale =7;
+                    
+                    
+            if (Input.GetKey(KeyCode.UpArrow))
+            Jump();
 
-                body.gravityScale =2;
-            }
+                    
+                
 
       
-        }else{
+        }else
             wallJumpCooldown += Time.deltaTime;
+        
+    }
+ 
+ private void Jump()
+    {
+        if (isGrounded())
+        {
+            body.velocity = new Vector2(body.velocity.x, jumpPower);
+            anim.SetTrigger("jump");
+        }
+        else if (onWall() && !isGrounded())
+        {
+            if (movJugador == 0)
+            {
+                body.velocity = new Vector2(-Mathf.Sign(transform.localScale.x) * 10, 0);
+                transform.localScale = new Vector3(-Mathf.Sign(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+            }
+            else
+                body.velocity = new Vector2(-Mathf.Sign(transform.localScale.x) * 3, 6);
+
+            wallJumpCooldown = 0;
         }
     }
  
-    private void Jump()
-    {
-        body.velocity = new Vector2(body.velocity.x, speed);
-        anim.SetTrigger("jump");
-    }
- 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        
-    }
 
     private bool isGrounded(){
         RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.1f, groundLayer);
@@ -80,5 +96,9 @@ public class MovimientoJugador : MonoBehaviour
         private bool onWall(){
         RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, new Vector2(transform.localScale.x, 0), 0.1f, wallLayer);
         return raycastHit.collider != null;
+    }
+
+    public bool puedeAtacar(){
+        return movJugador == 0 && isGrounded() && !onWall();
     }
 }
