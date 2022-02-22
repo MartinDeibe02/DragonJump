@@ -38,7 +38,12 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Proyectil.cs" />
      <Compile Include="Assets\Scripts\MovimientoJugador.cs" />
+     <Compile Include="Assets\Scripts\MovimientoCamara.cs" />
+     <Compile Include="Assets\Scripts\puerta.cs" />
      <Compile Include="Assets\Scripts\PlayerAttack.cs" />
+     <Compile Include="Assets\Scripts\Salud\Salud.cs" />
+     <Compile Include="Assets\Scripts\Salud\BarraSalud.cs" />
+     <Compile Include="Assets\Scripts\EnemigoSaw.cs" />
      <None Include="Assets\Packages\Dragon Warrior Files\Read Me.txt" />
     <Reference Include="UnityEngine">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.25f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>

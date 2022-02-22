@@ -42,3 +42,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Fondo
+    uniqueID: 1867695531
+    locked: 0
+  - name: Pared
+    uniqueID: 949403207
+    locked: 0
+  - name: Suelo
+    uniqueID: 2149109077
+    locked: 0
+  - name: Jugador
+    uniqueID: 1712750679
+    locked: 0

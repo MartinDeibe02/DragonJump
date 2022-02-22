@@ -15,6 +15,13 @@ public class MovimientoJugador : MonoBehaviour
     private BoxCollider2D boxCollider;
     private float wallJumpCooldown;
 
+
+    //dash
+    public float dashSpeed;
+    public float duracionDash;
+    private float dashCooldown;
+    public float DashColReset;
+
  
     private void Start()
     {
@@ -39,6 +46,22 @@ public class MovimientoJugador : MonoBehaviour
         //setear animacion
         anim.SetBool("run", movJugador != 0);
         anim.SetBool("grounded", isGrounded());
+
+
+
+        //dash
+        dashCooldown -= Time.deltaTime;
+        if(dashCooldown<1){
+            dashCooldown = -1;
+        }else{
+            dashCooldown -= Time.deltaTime;
+        }
+
+        if(Input.GetMouseButton(0)){ 
+            if(dashCooldown<=0){
+                StartCoroutine(Dash());
+            }
+        }
 
 
 //saltar pared
@@ -100,5 +123,23 @@ public class MovimientoJugador : MonoBehaviour
 
     public bool puedeAtacar(){
         return movJugador == 0 && isGrounded() && !onWall();
+    }
+
+    IEnumerator Dash(){
+        float startTime = Time.time;
+        float escalax = transform.localScale.x;
+
+        while(Time.time < startTime + duracionDash){
+            float movimiento = dashSpeed * Time.deltaTime;
+
+            if(Mathf.Sign(escalax)==1){
+                transform.Translate(movimiento,0,0);
+            }else{
+                transform.Translate(-movimiento,0,0);
+            }
+
+            dashCooldown = DashColReset;
+            yield return null;
+        }
     }
 }
