@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class Salud : MonoBehaviour
 {
@@ -36,8 +38,28 @@ public class Salud : MonoBehaviour
         }else{
             if(!muerto){
             anim.SetTrigger("muerto");
-            GetComponent<MovimientoJugador>().enabled = false;
+
+            //Jugador
+            if(GetComponent<MovimientoJugador>() != null){
+                 GetComponent<MovimientoJugador>().enabled = false;
+
+                 SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex +1);
+            }
+            //Enemigo
+            if(GetComponentInParent<EnemigoCaminar>() != null){
+                GetComponentInParent<EnemigoCaminar>().enabled = false;
+                                 SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex +1);
+
+            }
+
+            if(GetComponent<AtacarMele>() !=null){
+                GetComponent<AtacarMele>().enabled = false;
+            
+            }
+
             muerto = true;
+
+            
             }
 
         }
@@ -59,6 +81,10 @@ public class Salud : MonoBehaviour
         }
         Physics2D.IgnoreLayerCollision(10, 11, false);
 
+    }
+
+    private void Desactivar(){
+        gameObject.SetActive(false);
     }
 
 }
