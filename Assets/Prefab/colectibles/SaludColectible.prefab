@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   valorVida: 1
+  pick: {fileID: 8300000, guid: f15c2cf7accf85d4f97ecd6b99e1978d, type: 3}
 --- !u!61 &771509156936263241
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -21,6 +21,11 @@ public class AtacarMele : MonoBehaviour
 	private Salud saludJug;
 	private EnemigoCaminar enemigoCaminar;
 
+	[Header ("Audio")]
+
+	public AudioClip atacar;
+
+
 	private void Start(){
 		anim = GetComponent<Animator>();
 		enemigoCaminar = GetComponentInParent<EnemigoCaminar>();
@@ -32,10 +37,12 @@ public class AtacarMele : MonoBehaviour
 		//atacar
 		
 		if(playerVista()){
-			if(cooldownTimer > atacarCooldown){
+			if(cooldownTimer > atacarCooldown && saludJug.saludActual > 0){
 
 				cooldownTimer =0;
 				anim.SetTrigger("ataquemele");
+		        ControladorSonido.instance.Play(atacar);
+
 			}
 		}
 

@@ -11,6 +11,8 @@ public class PlayerAttack : MonoBehaviour{
     private MovimientoJugador movJugador;
     private float cooldown = Mathf.Infinity;
 
+    public AudioClip sonidoFuego;
+
 
     private void Start(){
         anim = GetComponent<Animator>();
@@ -26,6 +28,7 @@ public class PlayerAttack : MonoBehaviour{
     }
 
     private void Atacar(){
+        ControladorSonido.instance.Play(sonidoFuego);
         anim.SetTrigger("attack");
         cooldown=0;
 

@@ -146,6 +146,8 @@ MonoBehaviour:
   saludInicial: 3
   invulnerableDur: 0
   numeroFlash: 0
+  muerte: {fileID: 8300000, guid: 1b5a8c9cd4805b64ba6c76307daafc3c, type: 3}
+  "da\xF1o": {fileID: 8300000, guid: 204f48b21461e70429a3494e4cb6c319, type: 3}
 --- !u!114 &9186482543142647818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,9 +162,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   atacarCooldown: 2
   rango: 1
-  collideDist: 0.8
   "da\xF1o": 1
+  collideDist: 0.8
   boxCollider: {fileID: 9186482543142647820}
   playerLayer:
     serializedVersion: 2
     m_Bits: 256
+  atacar: {fileID: 8300000, guid: 76af7a5b1c402a94c9a5d7b002747964, type: 3}

@@ -22,6 +22,10 @@ public class MovimientoJugador : MonoBehaviour
     private float dashCooldown;
     public float DashColReset;
 
+    [Header ("Sonido")]
+    public AudioClip salto;
+    public AudioClip dash;
+
  
     private void Start()
     {
@@ -60,6 +64,8 @@ public class MovimientoJugador : MonoBehaviour
         if(Input.GetMouseButton(0)){ 
             if(dashCooldown<=0){
                 StartCoroutine(Dash());
+                ControladorSonido.instance.Play(dash);
+
             }
         }
 
@@ -77,13 +83,15 @@ public class MovimientoJugador : MonoBehaviour
                  body.gravityScale =7;
                     
                     
-            if (Input.GetKey(KeyCode.UpArrow))
-            Jump();
+            if (Input.GetKey(KeyCode.UpArrow)){
+                Jump();
 
+                if (Input.GetKeyDown(KeyCode.UpArrow) && isGrounded()){
+                ControladorSonido.instance.Play(salto);
+                }
+            }
                     
                 
-
-      
         }else
             wallJumpCooldown += Time.deltaTime;
         
@@ -135,6 +143,7 @@ public class MovimientoJugador : MonoBehaviour
 
             if(Mathf.Sign(escalax)==1){
                 transform.Translate(movimiento,0,0);
+
             }else{
                 transform.Translate(-movimiento,0,0);
             }

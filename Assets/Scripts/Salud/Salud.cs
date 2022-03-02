@@ -20,6 +20,9 @@ public class Salud : MonoBehaviour
     public int numeroFlash;
     private SpriteRenderer spriteRend;
 
+    [Header ("Muerte")]
+    public AudioClip daño;
+
     void Start()
     {
      saludActual = saludInicial;
@@ -35,6 +38,8 @@ public class Salud : MonoBehaviour
         if(saludActual>0){
             anim.SetTrigger("danho");
             StartCoroutine(invulnerabilidad());
+            ControladorSonido.instance.Play(daño);
+
         }else{
             if(!muerto){
             anim.SetTrigger("muerto");
@@ -58,6 +63,7 @@ public class Salud : MonoBehaviour
             }
 
             muerto = true;
+
 
             
             }

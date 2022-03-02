@@ -16,7 +16,6 @@ public class Menu : MonoBehaviour
 	}
 
 	public void Salir(){
-		Debug.Log("salir");
 		Application.Quit();
 	}
 }
