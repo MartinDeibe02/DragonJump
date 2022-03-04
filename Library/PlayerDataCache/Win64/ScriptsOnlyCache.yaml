@@ -9,6 +9,7 @@ ScriptsOnlyBuild:
     - EnemigoSaw
     - Flotar
     - Menu
+    - MenuPausa
     - MovimientoCamara
     - MovimientoJugador
     - PlayerAttack
@@ -229,6 +230,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1858}
     - Class: 114
+      Script: {instanceID: 1874}
+    - Class: 114
       Script: {instanceID: 2648}
     - Class: 114
       Script: {instanceID: 2722}
@@ -236,6 +239,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 2792}
     - Class: 114
       Script: {instanceID: 2900}
+    - Class: 114
+      Script: {instanceID: 2950}
     - Class: 114
       Script: {instanceID: 2976}
     - Class: 114
@@ -247,9 +252,13 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 3468}
     - Class: 114
+      Script: {instanceID: 3524}
+    - Class: 114
       Script: {instanceID: 3828}
     - Class: 114
       Script: {instanceID: 4352}
+    - Class: 114
+      Script: {instanceID: 4784}
     - Class: 114
       Script: {instanceID: 5164}
     - Class: 114
@@ -258,6 +267,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 5230}
     - Class: 114
       Script: {instanceID: 5526}
+    - Class: 114
+      Script: {instanceID: 73806}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 157
@@ -1091,9 +1102,15 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: TMPro.Examples
     className: TMP_TextEventCheck
+  - hash:
+      serializedVersion: 2
+      Hash: 27d1200057074fd6186cfd7e2b83d918
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: MenuPausa
   platform: 19
   scenePathNames:
   - Assets/Scenes/Menu.unity
   - Assets/Scenes/SampleScene.unity
   - Assets/Scenes/Fin.unity
-  playerPath: C:/Users/Markyuu/Desktop/dragon jump/DragonJump_Data/DragonJump.exe
+  playerPath: C:/Users/Markyuu/Desktop/dragon jump/DragonJump.exe
